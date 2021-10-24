@@ -1,7 +1,20 @@
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, location) {
+    game.over(false)
+})
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    haai.vy = -40
+})
+controller.A.onEvent(ControllerButtonEvent.Released, function () {
+    haai.ay = 80
+})
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Player, function (sprite, otherSprite) {
 	
 })
-let haai = sprites.create(img`
+let haai: Sprite = null
+game.showLongText("deze Engels game is bedoeld voor iedereen die Engels wil leren. ik zal in de groep 7 app iedere keer dat we Engels krijgen een nieuwe online zetten. Met spatie of de A kun je naar boven en dit soort uitleg weg halen", DialogLayout.Full)
+tiles.setTilemap(tilemap`level1`)
+scene.setBackgroundColor(6)
+haai = sprites.create(img`
     ..............fffcc.............
     ..............fbbddc............
     ...............fbbddc...........
@@ -19,6 +32,6 @@ let haai = sprites.create(img`
     .............cfbbdbfccccc.......
     ..............fffff.............
     `, SpriteKind.Player)
-controller.moveSprite(haai, 0, 200)
-haai.setStayInScreen(true)
+haai.setPosition(30, 42)
+haai.setStayInScreen(false)
 info.setLife(3)
