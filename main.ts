@@ -1,5 +1,5 @@
-scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, location) {
-    game.over(false)
+scene.onHitWall(SpriteKind.Player, function (sprite, location) {
+    game.over(false, effects.blizzard)
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     haai.vy = -40
@@ -32,6 +32,42 @@ haai = sprites.create(img`
     .............cfbbdbfccccc.......
     ..............fffff.............
     `, SpriteKind.Player)
+let projectile = sprites.createProjectileFromSprite(img`
+    3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+    3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+    3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+    3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+    3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+    3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+    3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+    3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+    3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+    3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+    3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+    3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+    3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+    3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+    3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+    3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+    `, haai, -50, 0)
+let projectile2 = sprites.createProjectileFromSide(img`
+    3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+    3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+    3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+    3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+    3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+    3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+    3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+    3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+    3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+    3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+    3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+    3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+    3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+    3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+    3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+    3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+    `, -50, 0)
 haai.setPosition(30, 42)
 haai.setStayInScreen(false)
 info.setLife(3)
